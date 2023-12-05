@@ -49,7 +49,7 @@ import Button from "../Button/Button";
 
 function Card1({ food, onAdd, onRemove }) {
   const [count, setCount] = useState(0);
-  const { price, Image, title } = food;
+  const { price, Image } = food;
   // const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleIncrement = () => {
