@@ -95,6 +95,11 @@ function App() {
     yx.style.display = "none";
 
   };
+  useEffect(() => {
+    tele.ready();
+    var yy = document.getElementById('section-cart');
+    yy.style.display = 'none';
+  }, []);
 
   const handleButtonClick = () => {
     const jsonData = JSON.stringify(cartItems)
@@ -108,6 +113,7 @@ function App() {
 
     }
   }
+  
   return (
     <>
 
@@ -143,6 +149,7 @@ function App() {
             </div>
           </div>
         ))}
+
         <section className="order-view" id="section-cart">
           <div className="cart-items">
             {/* Add your floating action button here */}
