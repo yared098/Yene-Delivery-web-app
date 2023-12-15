@@ -36,7 +36,7 @@ function Card1({ food, onAdd, onRemove }) {
       <div className="image__container">
         <img src={Image} alt={""} onClick={handleImageClick} />
       </div>
-      <h4 className="card__title" style={{ color: "black" }}>
+      <h4 className="card__title">
         {name},<span className="card__price">{price}ETB</span>
       </h4>
 
