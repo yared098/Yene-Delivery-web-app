@@ -4,8 +4,8 @@ import Card from "./Components/Card/Card";
 import Cart from "./Components/Cart/Cart";
 // import { useLocation } from 'react-router-dom';
 // import React, { useEffect, useState } from 'react';
-const { getData } = require("./db/db");
-const foods = getData();
+// const { getData } = require("./db/db");
+// const foods = getData();
 
 
 const tele = window.Telegram.WebApp;
@@ -91,7 +91,7 @@ function App() {
       <Cart cartItems={cartItems} onCheckout={onCheckout} />
       <p>add new addad</p>
       <div className="cards__container">
-        {foods.map((food) => {
+        {products.map((food) => {
           return (
             <Card food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
           );
