@@ -6,6 +6,7 @@ function ProductGridView() {
   const searchParams = new URLSearchParams(location.search);
   const jsonData = searchParams.get('data');
   const products = JSON.parse(jsonData);
+  console.log(products)
   
 
   return (
