@@ -49,7 +49,7 @@ function App() {
 
   return (
     <>
-      <h1 className="heading">Order Food</h1>
+      <h1 style={{background:"red"}} className="heading">Order Food</h1>
       <ProductGridView/>
       <Cart cartItems={cartItems} onCheckout={onCheckout}/>
       <div className="cards__container">
