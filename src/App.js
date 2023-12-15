@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Card from "./Components/Card/Card";
 import Cart from "./Components/Cart/Cart";
+import ProductGridView from "./ProductGridView";
 const { getData } = require("./db/db");
 const foods = getData();
+
 
 const tele = window.Telegram.WebApp;
 
@@ -48,6 +50,7 @@ function App() {
   return (
     <>
       <h1 className="heading">Order Food</h1>
+      <ProductGridView/>
       <Cart cartItems={cartItems} onCheckout={onCheckout}/>
       <div className="cards__container">
         {foods.map((food) => {
