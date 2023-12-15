@@ -1,12 +1,16 @@
 // import React from 'react';
-// import { useLocation } from 'react-router-dom';
-
+// import { useState, useEffect } from "react";
 // function ProductGridView() {
-//   const location = useLocation();
-//   const searchParams = new URLSearchParams(location.search);
-//   const jsonData = searchParams.get('data');
-//   const products = JSON.parse(jsonData);
-//   console.log(products)
+//     const [products, setProducts] = useState([]);
+
+//     useEffect(() => {
+//       const queryParams = new URLSearchParams(window.location.search);
+//       const jsonData = queryParams.get('data');
+//       if (jsonData) {
+//         const parsedData = JSON.parse(jsonData);
+//         setProducts(parsedData);
+//       }
+//     }, []);
   
 
 //   return (

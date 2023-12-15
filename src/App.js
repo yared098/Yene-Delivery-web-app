@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import Card from "./Components/Card/Card";
-// import Cart from "./Components/Cart/Cart";
-// import { useLocation } from 'react-router-dom';
-// import React, { useEffect, useState } from 'react';
-// const { getData } = require("./db/db");
-// const foods = getData();
+
 
 
 const tele = window.Telegram.WebApp;
