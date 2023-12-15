@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Card from "./Components/Card/Card";
 import Cart from "./Components/Cart/Cart";
-// import ProductGridView from "./ProductGridView";
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
+// import React, { useEffect, useState } from 'react';
 const { getData } = require("./db/db");
 const foods = getData();
 
@@ -11,11 +11,22 @@ const foods = getData();
 const tele = window.Telegram.WebApp;
 
 function App() {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const jsonData = searchParams.get('data');
-  const products = JSON.parse(jsonData);
-  console.log(products)
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const jsonData = queryParams.get('data');
+    if (jsonData) {
+      const parsedData = JSON.parse(jsonData);
+      setProducts(parsedData);
+    }
+  }, []);
+
+  // const location = useLocation();
+  // const searchParams = new URLSearchParams(location.search);
+  // const jsonData = searchParams.get('data');
+  // const products = JSON.parse(jsonData);
+  // console.log(products)
 
 
   const [cartItems, setCartItems] = useState([]);
@@ -63,7 +74,7 @@ function App() {
         <h1 style={{ background: "green" }}>Product Grid View</h1>
       <h1>Product Grid View</h1>
       {products.length === 0 ? (
-        <p>No data is found.</p>
+        <p style={{background:"green"}}>No data is found.</p>
       ) : (
         <div className="grid-container">
           {products.map((product) => (
