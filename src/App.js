@@ -68,7 +68,7 @@ function App() {
 
   return (
     <>
-      <h1 style={{ background: "red" }} className="heading">Order Food</h1>
+      {/* <h1 style={{ background: "red" }} className="heading">Order Food</h1>
 
       <div style={{ background: "green" }}>
         <h1 style={{ background: "green" }}>Product Grid View</h1>
@@ -81,13 +81,13 @@ function App() {
             <div key={product.id} className="product-card">
               <h2>{product.name}</h2>
               <p>Price: {product.price}</p>
-              {/* Add more product details or components as needed */}
+            
             </div>
           ))}
         </div>
       )}
         <p>wellcome</p>
-      </div>
+      </div> */}
       <Cart cartItems={cartItems} onCheckout={onCheckout} />
       <p>add new addad</p>
       <div className="cards__container">
