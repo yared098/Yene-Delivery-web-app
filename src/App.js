@@ -65,38 +65,91 @@ function App() {
     tele.MainButton.text = "Pay :)";
     tele.MainButton.show();
   };
+  const editbtn = function () {
+    var xy = document.getElementById('section-1');
+    var yx = document.getElementById('section-cart');
+    xy.style.display = 'block';
+    yx.style.display = "none";
+
+  };
+
+  const handleButtonClick = () => {
+    const jsonData = JSON.stringify(cartItems)
+    tele.MainButton.showProgress(true);
+
+    window.Telegram.WebApp.MainButton.text = " pay ";
+
+    window.Telegram.WebApp.MainButton.show();
+    if (window.Telegram && window.Telegram.WebApp) {
+      window.Telegram.WebApp.sendData(jsonData);
+
+    }
+  }
 
   return (
     <>
-      {/* <h1 style={{ background: "red" }} className="heading">Order Food</h1>
 
-      <div style={{ background: "green" }}>
-        <h1 style={{ background: "green" }}>Product Grid View</h1>
-      <h1>Product Grid View</h1>
-      {products.length === 0 ? (
-        <p style={{background:"green"}}>No data is found.</p>
-      ) : (
-        <div className="grid-container">
-          {products.map((product) => (
-            <div key={product.id} className="product-card">
-              <h2>{product.name}</h2>
-              <p>Price: {product.price}</p>
-            
+      <section className="cafe-page cafe-items " id="section-1">
+        {/* <div style={{ background: "green" }}>
+          <h1 style={{ background: "white" }}>Product Grid View</h1>
+          <h1>Product Grid View</h1>
+          {products.length === 0 ? (
+            <p style={{ background: "green" }}>No data is found.</p>
+          ) : (
+            <div className="grid-container">
+              {products.map((product) => (
+                <div key={product.id} className="product-card">
+                  <h2>{product.name}</h2>
+                  <p>Price: {product.price}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
+        </div> */}
+        <Cart cartItems={cartItems} onCheckout={onCheckout} />
+        <div className="cafe-items"id="showpr">
+          {products.map((food) => {
+            return (
+              <Card food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
+            );
+          })}
         </div>
-      )}
-        <p>wellcome</p>
-      </div> */}
-      <Cart cartItems={cartItems} onCheckout={onCheckout} />
-      <p>add new addad</p>
-      <div className="cards__container">
-        {products.map((food) => {
-          return (
-            <Card food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
-          );
-        })}
-      </div>
+      </section>
+      <section className="order-view" id="section-cart">
+        <div className="order-view cafe-order-header-wrap">
+          <h2 className="cafe-order-header">Your Order</h2>
+          <button onClick={editbtn}>Edit</button>
+        </div>
+        {cartItems.map((item) => (
+          <div key={item.id} className="order-view cart-item">
+            <div className="item-details">
+              <img src={item.image} alt={item.title} className="cafe-order-item-photo" />
+              <div className="order-view cafe-order-item-label">
+                <div className="cafe-order-item-title">
+                  {item.name} <span className="cafe-order-item-counter"><span className="js-order-item-counter">{item.quantity}</span>x</span>
+                </div>
+                <div className="cafe-order-item-description">{"Total price " + item.quantity * item.price + " : ETB"}</div>
+              </div>
+              <div className="cafe-order-item-price js-order-item-price">{" " + item.price + "ETB"}</div>
+            </div>
+          </div>
+        ))}
+        <section className="order-view" id="section-cart">
+          <div className="cart-items">
+            {/* Add your floating action button here */}
+            <div className="floating-action-button">
+              <button onClick={handleButtonClick} className="fab">Pay</button>
+            </div>
+          </div>
+          <div className="comment-section">
+            <h3 className="comment-section-title">Write Comment</h3>
+            <form className="comment-form">
+              <textarea className="comment-input" placeholder="Add a comment"></textarea>
+            </form>
+            <div className="comments"></div>
+          </div>
+        </section>
+      </section>
     </>
   );
 }

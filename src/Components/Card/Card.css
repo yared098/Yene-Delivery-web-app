@@ -19,7 +19,7 @@ html.dark body {
   text-align: center;
   /* color:black; */
   color: #524848;
-  font-size: small;
+  font-size: smaller;
   color: var(--text-color);
   white-space: nowrap;
   overflow: hidden;
@@ -85,7 +85,8 @@ button {
 
 .card__badge {
   position: absolute;
-  top: 12px;
+  top: 19px;
+  left: 10px;
   right: 90px;
 
   width: 30px;
