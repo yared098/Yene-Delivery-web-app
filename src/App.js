@@ -7,6 +7,7 @@ import Card from "./Components/Card/Card";
 const tele = window.Telegram.WebApp;
 
 tele.MainButton.text = "Cart Lists";
+
 tele.MainButton.show().onClick(() => {
   var x = document.getElementById('section-1');
   var y = document.getElementById('section-cart');
@@ -42,9 +43,18 @@ tele.MainButton.show().onClick(() => {
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [infoName, setInfoName] = useState('');
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
+    const infoParam = queryParams.get('info');
+
+    // Parse the info parameter as JSON if needed
+    const infoData = infoParam ? JSON.parse(infoParam) : {};
+    const name = infoData.name;
+
+    setInfoName(name);
+    
     const jsonData = queryParams.get('data');
     if (jsonData) {
       const parsedData = JSON.parse(jsonData);
@@ -56,6 +66,7 @@ function App() {
 
   useEffect(() => {
     tele.ready();
+    tele.MainButton.title=infoName;
   });
 
   const onAdd = (food) => {
