@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Card from "./Components/Card/Card";
 import Cart from "./Components/Cart/Cart";
-import ProductGridView from "./ProductGridView";
+// import ProductGridView from "./ProductGridView";
+import { useLocation } from 'react-router-dom';
 const { getData } = require("./db/db");
 const foods = getData();
 
@@ -10,6 +11,13 @@ const foods = getData();
 const tele = window.Telegram.WebApp;
 
 function App() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const jsonData = searchParams.get('data');
+  const products = JSON.parse(jsonData);
+  console.log(products)
+
+
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
@@ -49,9 +57,28 @@ function App() {
 
   return (
     <>
-      <h1 style={{background:"red"}} className="heading">Order Food</h1>
-      <ProductGridView/>
-      <Cart cartItems={cartItems} onCheckout={onCheckout}/>
+      <h1 style={{ background: "red" }} className="heading">Order Food</h1>
+
+      <div style={{ background: "green" }}>
+        <h1 style={{ background: "green" }}>Product Grid View</h1>
+      <h1>Product Grid View</h1>
+      {products.length === 0 ? (
+        <p>No data is found.</p>
+      ) : (
+        <div className="grid-container">
+          {products.map((product) => (
+            <div key={product.id} className="product-card">
+              <h2>{product.name}</h2>
+              <p>Price: {product.price}</p>
+              {/* Add more product details or components as needed */}
+            </div>
+          ))}
+        </div>
+      )}
+        <p>wellcome</p>
+      </div>
+      <Cart cartItems={cartItems} onCheckout={onCheckout} />
+      <p>add new addad</p>
       <div className="cards__container">
         {foods.map((food) => {
           return (
