@@ -6,6 +6,40 @@ import Card from "./Components/Card/Card";
 
 const tele = window.Telegram.WebApp;
 
+tele.MainButton.text = "Cart Lists";
+tele.MainButton.show().onClick(() => {
+  var x = document.getElementById('section-1');
+  var y = document.getElementById('section-cart');
+  x.style.display = 'none';
+  y.style.display = "block";
+
+  tele.MainButton.text = "Order Now";
+  tele.MainButton.show().onClick(() => {
+
+    if (String(tele.MainButton.tele.text) === "Click to Pay") {
+      tele.MainButton.text = "chack out clicked";
+      tele.MainButton.show();
+
+    } else {
+      tele.MainButton.text = "chack out  els condition";
+      tele.MainButton.show();
+
+    }
+
+  });
+
+  tele.BackButton.isVisible = true;
+  tele.BackButton.onClick(() => {
+    var xx = document.getElementById('section-1');
+    var yy = document.getElementById('section-cart');
+    xx.style.display = 'block';
+    yy.style.display = "none";
+    tele.MainButton.text = "Cart Lists";
+    tele.BackButton.isVisible = false;
+
+  });
+});
+
 function App() {
   const [products, setProducts] = useState([]);
 
