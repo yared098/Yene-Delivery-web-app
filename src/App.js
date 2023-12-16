@@ -42,7 +42,7 @@ tele.MainButton.show().onClick(() => {
 
 function App() {
   const [products, setProducts] = useState([]);
-  
+
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
@@ -114,14 +114,14 @@ function App() {
 
     }
   }
-  
+
   return (
     <>
 
       <section className="cafe-page cafe-items " id="section-1">
-        
+
         {/* <Cart cartItems={cartItems} onCheckout={onCheckout} /> */}
-        <div className="cafe-items"id="showpr">
+        <div className="cafe-items" id="showpr">
           {products.map((food) => {
             return (
               <Card food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
@@ -132,6 +132,7 @@ function App() {
       {/* this is section one   end*/}
 
       <section className="order-view" id="section-cart">
+        <h2 className="cafe-order-header">YeneDelivery</h2>
         <div className="order-view cafe-order-header-wrap">
           <h2 className="cafe-order-header">Your Order</h2>
           <button onClick={editbtn}>Edit</button>
