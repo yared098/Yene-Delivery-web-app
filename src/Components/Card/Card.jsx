@@ -7,7 +7,7 @@ function Card1({ food, onAdd, onRemove }) {
   const [count, setCount] = useState(0);
   const { price, Image, name, disc } = food;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const noimage = "https://www.svgrepo.com/show/89274/food.svg";
+  const noimage = "https://www.svgrepo.com/show/89274/food.svg";
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -36,30 +36,8 @@ function Card1({ food, onAdd, onRemove }) {
       </span>
       <div className="image__container">
         {/* <img src={Image} alt={""} onClick={handleImageClick} /> */}
-        {/* {Image === "" ? (
-          <img src={noimage} alt="" onClick={handleImageClick} />
-        ) : (
-          <img src={Image} alt="" onClick={handleImageClick} />
-        )} */}
         {Image === "" ? (
-          <svg
-            width="100"
-            height="100"
-            viewBox="0 0 100 100"
-            onClick={handleImageClick}
-          >
-            {/* Define your SVG animation here */}
-            <circle cx="50" cy="50" r="40" fill="blue">
-              <animate
-                attributeName="r"
-                from="40"
-                to="20"
-                dur="1s"
-                repeatCount="indefinite"
-                direction="alternate"
-              />
-            </circle>
-          </svg>
+          <img src={noimage} alt="" onClick={handleImageClick} />
         ) : (
           <img src={Image} alt="" onClick={handleImageClick} />
         )}
