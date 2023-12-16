@@ -7,6 +7,7 @@ function Card1({ food, onAdd, onRemove }) {
   const [count, setCount] = useState(0);
   const { price, Image, name, disc } = food;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const noimage = "https://www.svgrepo.com/show/89274/food.svg";
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -34,7 +35,12 @@ function Card1({ food, onAdd, onRemove }) {
         {count}
       </span>
       <div className="image__container">
-        <img src={Image} alt={""} onClick={handleImageClick} />
+        {/* <img src={Image} alt={""} onClick={handleImageClick} /> */}
+        {Image === "" ? (
+          <img src={noimage} alt="" onClick={handleImageClick} />
+        ) : (
+          <img src={Image} alt="" onClick={handleImageClick} />
+        )}
       </div>
       <h4 className="card__title">
         {name},<span className="card__price">{price}ETB</span>
