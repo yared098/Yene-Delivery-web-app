@@ -7,7 +7,7 @@ import Card from "./Components/Card/Card";
 const tele = window.Telegram.WebApp;
 
 tele.MainButton.text = "Cart Lists";
-tele.MainButton.title = "Hello world";
+// tele.MainButton.title = "H";
 tele.MainButton.show().onClick(() => {
   var x = document.getElementById('section-1');
   var y = document.getElementById('section-cart');
