@@ -64,6 +64,7 @@ function App() {
     setNemHotel(name);
     console.log('Hotel ID:', hId);
     console.log('Telegram ID:', telegramId);
+    tele.MainButton.title = name;
   }, []);
   
 
@@ -178,6 +179,7 @@ function App() {
 
         <section className="order-view" id="section-cart">
           <div className="cart-items">
+            {tele.MainButton.title = namehotel}
             {/* Add your floating action button here */}
             <div className="floating-action-button">
               <button onClick={handleButtonClick} className="fab">Order now</button>
