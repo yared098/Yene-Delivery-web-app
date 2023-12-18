@@ -106,7 +106,7 @@ function App() {
     const jsonData = JSON.stringify(cartItems)
     tele.MainButton.showProgress(true);
 
-    window.Telegram.WebApp.MainButton.text = " pay ";
+    window.Telegram.WebApp.MainButton.text = "Order";
 
     window.Telegram.WebApp.MainButton.show();
     if (window.Telegram && window.Telegram.WebApp) {
@@ -155,7 +155,7 @@ function App() {
           <div className="cart-items">
             {/* Add your floating action button here */}
             <div className="floating-action-button">
-              <button onClick={handleButtonClick} className="fab">Pay</button>
+              <button onClick={handleButtonClick} className="fab">Order now</button>
             </div>
           </div>
           <div className="comment-section">
