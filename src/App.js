@@ -42,6 +42,29 @@ tele.MainButton.show().onClick(() => {
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [namehotel,setNemHotel]=useState("");
+  // add new web info
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const encodedHotelInfo = urlParams.get('info');
+
+    // URL-decode the encodedHotelInfo if needed
+    const hotelInfo = decodeURIComponent(encodedHotelInfo);
+
+    // Parse the JSON string into a JavaScript object
+    const hotelInfoObject = JSON.parse(hotelInfo);
+
+    // Access specific values from the hotelInfoObject
+    const name = hotelInfoObject.name;
+    const hId = hotelInfoObject.h_id;
+    const telegramId = hotelInfoObject.telegramId;
+
+    // Use the values as needed
+    console.log('Name:', name);
+    setNemHotel(name);
+    console.log('Hotel ID:', hId);
+    console.log('Telegram ID:', telegramId);
+  }, []);
   
 
   useEffect(() => {
@@ -132,6 +155,8 @@ function App() {
       {/* this is section one   end*/}
 
       <section className="order-view" id="section-cart">
+      
+      <h2 className="cafe-order-header">{namehotel}</h2>
         <div className="order-view cafe-order-header-wrap">
           <h2 className="cafe-order-header">Your Order</h2>
           <button onClick={editbtn}>Edit</button>
