@@ -131,10 +131,12 @@ function App() {
   }, []);
 
   const handleButtonClick = () => {
+    // this is add new
    const data = {
       "cartItems": cartItems,
       "hotelinfo": hoteldata
   }
+    // const jsonData = JSON.stringify(cartItems)
     const jsonData = JSON.stringify(data)
     tele.MainButton.showProgress(true);
     
