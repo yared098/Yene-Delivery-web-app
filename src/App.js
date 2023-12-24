@@ -44,6 +44,8 @@ tele.MainButton.show().onClick(() => {
 function App() {
   const [products, setProducts] = useState([]);
   const [namehotel,setNemHotel]=useState("");
+  // add new  set and get name
+  const [hoteldata,sethoteldate]=useState([]);
   // add new web info
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -54,6 +56,8 @@ function App() {
 
     // Parse the JSON string into a JavaScript object
     const hotelInfoObject = JSON.parse(hotelInfo);
+
+    sethoteldate(hotelInfo)
 
     // Access specific values from the hotelInfoObject
     const name = hotelInfoObject.name;
@@ -127,8 +131,13 @@ function App() {
   }, []);
 
   const handleButtonClick = () => {
-    const jsonData = JSON.stringify(cartItems)
+   const data = {
+      "cartItems": cartItems,
+      "hotelinfo": hoteldata
+  }
+    const jsonData = JSON.stringify(data)
     tele.MainButton.showProgress(true);
+    
 
     window.Telegram.WebApp.MainButton.text = "Order";
 
