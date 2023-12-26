@@ -130,26 +130,60 @@ function App() {
     yy.style.display = 'none';
   }, []);
 
-  const handleButtonClick = () => {
-    // this is add new
-   const data = {
-      "cartItems": cartItems,
-      "hotelinfo": hoteldata
-  }
-    // const jsonData = JSON.stringify(cartItems)
-    const jsonData = JSON.stringify(data)
-    tele.MainButton.showProgress(true);
+  // const handleButtonClick = () => {
+  //   // this is add new
+  //  const data = {
+  //     "cartItems": cartItems,
+  //     "hotelinfo": hoteldata
+  // }
+  //   // const jsonData = JSON.stringify(cartItems)
+  //   const jsonData = JSON.stringify(data)
+  //   tele.MainButton.showProgress(true);
     
 
-    window.Telegram.WebApp.MainButton.text = "Order";
+  //   window.Telegram.WebApp.MainButton.text = "Order";
 
-    window.Telegram.WebApp.MainButton.show();
-    if (window.Telegram && window.Telegram.WebApp) {
-      window.Telegram.WebApp.sendData(jsonData);
+  //   window.Telegram.WebApp.MainButton.show();
+  //   if (window.Telegram && window.Telegram.WebApp) {
+  //     window.Telegram.WebApp.sendData(jsonData);
 
-    }
-  }
+  //   }
+  // }
   
+
+  const handleButtonClick = () => {
+    const data = {
+      cartItems: cartItems,
+      hotelinfo: hoteldata,
+    };
+  
+    const jsonData = JSON.stringify(data);
+    const botToken = "5685380140:AAHsgq8SUaQ10yHhxU_b-CYBMG01farQFXw";
+    const chatId = "761513957";
+  
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: jsonData,
+      }),
+    })
+      .then((response) => {
+        // Handle the response
+        tele.MainButton.showProgress(false);
+      })
+      .catch((error) => {
+        // Handle errors
+        tele.MainButton.showProgress(false);
+      });
+  
+    tele.MainButton.showProgress(true);
+    tele.MainButton.text = "Order";
+    tele.MainButton.show();
+  };
   return (
     <>
 
